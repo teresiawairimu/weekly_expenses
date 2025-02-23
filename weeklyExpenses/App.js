@@ -7,6 +7,9 @@ const reducer = (state, action) => {
   switch(action.type) {
     case 'addExpense':
       return [...state, action.payload];
+    case 'deleteExpense':
+      return state.filter((expense) => ( expense !== action.payload));
+
     default:
       return state;
   }
@@ -22,7 +25,10 @@ export default function App() {
         <AddExpenses insertExpense = {(newExpense) => {dispatch({type: 'addExpense', payload: newExpense})}}/>
       </View>
       <View style={styles.displayExpenseStyle}>
-        <DisplayExpenses weeklyExpenseList = {expenseList}/>
+        <DisplayExpenses 
+          weeklyExpenseList = {expenseList}
+          removeExpense = { (oldExpense) => {dispatch({type: 'deleteExpense', payload: oldExpense})}}
+        />
       </View>
       
     </View>
