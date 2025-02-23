@@ -1,15 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useReducer} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AddExpenses from './components/AddExpenses';
 import DisplayExpenses from './components/DisplayExpenses';
 
+const reducer = (state, action) => {
+  switch(action.type) {
+    case 'addExpense':
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+
+}
 
 export default function App() {
-  const [expenseList, setExpenses] = useState([]);
+  //const [expenseList, setExpenses] = useState([]);
+  const [expenseList, dispatch] = useReducer(reducer, []);
   return (
     <View style={styles.container}>   
       <View style={styles.addExpenseStyle}>
-        <AddExpenses insertExpense = {(newExpense) => {setExpenses([...expenseList, newExpense])}}/>
+        <AddExpenses insertExpense = {(newExpense) => {dispatch({type: 'addExpense', payload: newExpense})}}/>
       </View>
       <View style={styles.displayExpenseStyle}>
         <DisplayExpenses weeklyExpenseList = {expenseList}/>
