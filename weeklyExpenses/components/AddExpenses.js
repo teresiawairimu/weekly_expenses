@@ -2,28 +2,27 @@ import {View, StyleSheet, Text, TextInput, Button} from "react-native";
 import React, {useState} from "react";
 
 const AddExpenses = (props) => {
-  const [expense, setExpenses] = useState([]);
   let expenseItem = '';
   return (
     <View style={styles.container}>
       <TextInput 
         style={styles.input}
-        onchangeText={(newValue) => { expenseItem = newValue; }}
-        value={expense}
+        onChangeText={(newValue) => { expenseItem = newValue; }}
         placeholder="Enter Expense Entry"
       />
       <View style={styles.buttonStyle}>
-        <View style={{marginRight: 50}}>
+        <View style={{marginRight: 50, borderRadius: 10}}>
           <Button
-            title="Add!"
+            title="Add"
             onPress={ () => {props.insertExpense(expenseItem)}}
           />
         </View>
-        <Button
-          title="Cancel"
-        />
+          <View style={{borderRadius: 10}}>
+            <Button
+              title="Cancel"
+            />
+          </View>
       </View>
-
     </View>
   );
 };
@@ -41,7 +40,8 @@ const styles = StyleSheet.create({
     width: 200,
     margin: 12,
     borderWidth: 1,
-    padding: 10
+    padding: 10,
+    borderRadius: 5
   },
   buttonStyle: {
     flexDirection: 'row',

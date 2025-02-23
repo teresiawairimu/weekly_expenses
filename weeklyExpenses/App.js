@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   },
   displayExpenseStyle: {
     flex: 3,
+    alignSelf: 'stretch'
     //borderWidth: 5,
     //borderColor: 'green'
 

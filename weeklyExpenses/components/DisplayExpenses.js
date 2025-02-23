@@ -3,14 +3,14 @@ import {FlatList, View, Text, StyleSheet} from "react-native";
 const DisplayExpenses = (props) => {
   return (
     <View>
-      <Text>
-        Hello display expenses
-      </Text>
       <FlatList 
         data={props.weeklyExpenseList}
-        keyExtractor={(expenseItem, index) => { index}}
+        keyExtractor={(expenseItem, index) =>  index}
         renderItem={(element) => {
-          <Text style ={styles.textStyle}>{element.item}</Text>
+          console.log(element);
+          return (
+            <Text style ={styles.textStyle}>{element.item}</Text>
+          );
         }}
       />
     </View>
